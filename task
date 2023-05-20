@@ -1,0 +1,48 @@
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.OneToOne;
+
+@Entity
+public class ExampleEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "example_column")
+    private String exampleColumn;
+
+    @OneToOne
+    private AnotherEntity anotherEntity;
+
+    public ExampleEntity() {
+        // Default constructor required by JPA
+    }
+
+    public ExampleEntity(String exampleColumn, AnotherEntity anotherEntity) {
+        this.exampleColumn = exampleColumn;
+        this.anotherEntity = anotherEntity;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getExampleColumn() {
+        return exampleColumn;
+    }
+
+    public void setExampleColumn(String exampleColumn) {
+        this.exampleColumn = exampleColumn;
+    }
+
+    public AnotherEntity getAnotherEntity() {
+        return anotherEntity;
+    }
+
+    public void setAnotherEntity(AnotherEntity anotherEntity) {
+        this.anotherEntity = anotherEntity;
+    }
+}
